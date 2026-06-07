@@ -11,6 +11,12 @@
     --ease: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+@property --orbit-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
 body.theme-light {
     --paper: #e8e8e8;
     --paper-rgb: 232, 232, 232;
@@ -353,10 +359,10 @@ body:not(.theme-light) .theme-thumb {
     border-color: rgba(var(--ink-rgb), 0.92);
 }
 
-.folder::before {
+.folder::before,
+.folder::after {
     content: "";
     position: absolute;
-    left: 50%;
     z-index: 5;
     pointer-events: none;
     opacity: 0;
@@ -364,6 +370,7 @@ body:not(.theme-light) .theme-thumb {
 }
 
 .folder::before {
+    left: 50%;
     bottom: 20px;
     width: min(44%, 190px);
     height: 1px;
@@ -371,9 +378,51 @@ body:not(.theme-light) .theme-thumb {
     transform: translate(-50%, 10px) scaleX(0.2);
 }
 
-.folder:hover::before {
+.folder::after {
+    left: 26px;
+    top: 23px;
+    width: calc(100% - 34px);
+    height: calc(100% - 34px);
+    padding: 2px;
+    background:
+        conic-gradient(
+            from var(--orbit-angle),
+            transparent 0deg,
+            transparent 28deg,
+            rgba(214, 59, 59, 0.12) 44deg,
+            rgba(214, 59, 59, 0.95) 78deg,
+            rgba(214, 59, 59, 0.95) 124deg,
+            rgba(214, 59, 59, 0.12) 146deg,
+            transparent 172deg,
+            transparent 208deg,
+            rgba(214, 59, 59, 0.18) 224deg,
+            rgba(214, 59, 59, 0.86) 252deg,
+            rgba(214, 59, 59, 0.86) 304deg,
+            rgba(214, 59, 59, 0.14) 324deg,
+            transparent 360deg
+        );
+    clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+    filter:
+        drop-shadow(0 0 8px rgba(214, 59, 59, 0.85))
+        drop-shadow(0 0 24px rgba(214, 59, 59, 0.42));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    transform: translate(8px, 6px) rotateX(2deg);
+}
+
+.folder:hover::before,
+.folder:hover::after {
     opacity: 1;
+}
+
+.folder:hover::before {
     transform: translate(-50%, 0) scale(1);
+}
+
+.folder:hover::after {
+    animation: redOrbit 1450ms linear infinite;
 }
 
 .folder.is-vanishing {
@@ -870,6 +919,12 @@ body:not(.theme-light) .theme-thumb {
     50% {
         opacity: 1;
         transform: translate(-50%, -4px) scale(1.08);
+    }
+}
+
+@keyframes redOrbit {
+    to {
+        --orbit-angle: 360deg;
     }
 }
 
