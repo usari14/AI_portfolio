@@ -1,4 +1,5 @@
-use actix_web::{web, App, HttpServer, HttpResponse};
+use actix_files::Files;
+use actix_web::{App, HttpResponse, HttpServer, web};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -6,6 +7,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(index))
+            .service(Files::new("/assets", "static").prefer_utf8(true))
     })
     .bind("127.0.0.1:8080")?
     .run()

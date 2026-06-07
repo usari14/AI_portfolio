@@ -3,11 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Site</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Usama Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css?v=4">
 </head>
-<body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center">
-    <h1 class="text-5xl font-bold tracking-tight mb-4">Portfolio Site Usama</h1>
-    <p class="text-gray-400 text-xl">Welcome to my portfolio. More coming soon!</p>
+<body>
+    <main class="app-shell" aria-live="polite">
+        <section class="terminal-view is-active" id="terminalView">
+            <div class="terminal-stage" id="terminalStage">
+                <div class="terminal-copy" id="terminalCopy"></div>
+                <div class="input-line" id="inputLine" aria-hidden="true"></div>
+                <div class="terminal-caret" id="terminalCaret" aria-hidden="true"></div>
+                <input
+                    class="system-input"
+                    id="systemInput"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                    aria-label="System access input"
+                >
+            </div>
+        </section>
+
+        <section class="workspace-view" id="workspaceView" aria-label="Portfolio workspace">
+            <div class="workspace-grid" id="workspaceGrid"></div>
+            <div class="detail-view" id="detailView" aria-hidden="true">
+                <button class="back-button" id="backButton" type="button" aria-label="Back to folders">BACK</button>
+                <div class="schematic-grid" id="schematicGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/assets/app.js?v=4" defer></script>
 </body>
 </html>
