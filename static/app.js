@@ -3,67 +3,85 @@ const modules = [
     {
         title: "Personal Info",
         panels: [
-            ["Identity", "Usama. Frontend systems, austere interfaces, precise motion."],
-            ["Focus", "High-end web experiences with deliberate state and clean geometry."],
-            ["Location", "Available for remote collaborations and product-facing builds."],
-            ["Stack", "Rust, JavaScript, CSS architecture, interactive motion systems."],
-            ["Signal", "Minimal surface. Strong rhythm. Fast transitions."],
-            ["Contact", "Purpose-driven access through the portfolio workspace."]
+            ["CV", "Resume, profile summary, role fit, and capability snapshot.", "https://www.linkedin.com/"],
+            ["Identity", "Usama. Frontend systems, austere interfaces, precise motion.", "https://github.com/"],
+            ["Focus", "High-end web experiences with deliberate state and clean geometry.", "https://developer.mozilla.org/"],
+            ["Location", "Available for remote collaborations and product-facing builds.", "https://www.linkedin.com/"],
+            ["Stack", "Rust, JavaScript, CSS architecture, interactive motion systems.", "https://www.rust-lang.org/"],
+            ["Signal", "Minimal surface. Strong rhythm. Fast transitions.", "https://web.dev/"],
+            ["Contact", "Purpose-driven access through the portfolio workspace.", "mailto:hello@example.com"],
+            ["Timeline", "Career notes, learning arc, and active direction.", "https://github.com/"],
+            ["Availability", "Collaboration status, preferred project types, and response path.", "https://www.linkedin.com/"]
         ]
     },
     {
         title: "Habits",
         panels: [
-            ["Daily System", "Plan, build, verify, refine. Repeat until the interface feels exact."],
-            ["Learning", "Study UI mechanics, motion timing, backend fundamentals, and product taste."],
-            ["Craft", "Small commits, clear folders, measured interactions."],
-            ["Health", "Sustainable pace, focused blocks, deliberate reset time."],
-            ["Review", "Inspect details before declaring a screen complete."],
-            ["Principle", "Precision is a habit, not a pass at the end."]
+            ["Daily System", "Plan, build, verify, refine. Repeat until the interface feels exact.", "https://todoist.com/"],
+            ["Learning", "Study UI mechanics, motion timing, backend fundamentals, and product taste.", "https://frontendmasters.com/"],
+            ["Craft", "Small commits, clear folders, measured interactions.", "https://git-scm.com/"],
+            ["Health", "Sustainable pace, focused blocks, deliberate reset time.", "https://www.notion.so/"],
+            ["Review", "Inspect details before declaring a screen complete.", "https://web.dev/measure/"],
+            ["Principle", "Precision is a habit, not a pass at the end.", "https://pragprog.com/"],
+            ["Deep Work", "Focused blocks for execution-heavy interface work.", "https://www.notion.so/"],
+            ["Reading", "Technical references, design notes, and implementation logs.", "https://developer.mozilla.org/"],
+            ["Retrospective", "Weekly review of decisions, bugs, and improvements.", "https://github.com/"]
         ]
     },
     {
         title: "Digital Footprint",
         panels: [
-            ["Profile", "Curated presence across engineering, design, and product experiments."],
-            ["GitHub", "Implementation notes, prototypes, and production-minded code."],
-            ["LinkedIn", "Professional summary, experience, and collaboration context."],
-            ["Writing", "Short-form thinking around interfaces and technical execution."],
-            ["Proof", "Screens, repos, deployments, and measurable product work."],
-            ["Reach", "Focused channels, low noise, clear intent."]
+            ["Profile", "Curated presence across engineering, design, and product experiments.", "https://www.linkedin.com/"],
+            ["GitHub", "Implementation notes, prototypes, and production-minded code.", "https://github.com/"],
+            ["LinkedIn", "Professional summary, experience, and collaboration context.", "https://www.linkedin.com/"],
+            ["Writing", "Short-form thinking around interfaces and technical execution.", "https://medium.com/"],
+            ["Proof", "Screens, repos, deployments, and measurable product work.", "https://vercel.com/"],
+            ["Reach", "Focused channels, low noise, clear intent.", "mailto:hello@example.com"],
+            ["Experiments", "Interactive prototypes and interface motion studies.", "https://codepen.io/"],
+            ["Notes", "Design references and technical annotations.", "https://www.notion.so/"],
+            ["Public Work", "Selected public-facing builds and code samples.", "https://github.com/"]
         ]
     },
     {
         title: "Shopify",
         panels: [
-            ["Storefront", "Conversion-aware layouts with exact product hierarchy."],
-            ["Theme Work", "Liquid sections, custom blocks, and maintainable styling."],
-            ["Performance", "Lean assets, responsive media, measurable loading behavior."],
-            ["Checkout Path", "Reduced friction through clear product and cart states."],
-            ["Integrations", "Apps, tracking, inventory, and operational details."],
-            ["Result", "Commerce surfaces that feel premium and stay practical."]
+            ["Storefront", "Conversion-aware layouts with exact product hierarchy.", "https://www.shopify.com/"],
+            ["Theme Work", "Liquid sections, custom blocks, and maintainable styling.", "https://shopify.dev/docs/storefronts/themes"],
+            ["Performance", "Lean assets, responsive media, measurable loading behavior.", "https://web.dev/"],
+            ["Checkout Path", "Reduced friction through clear product and cart states.", "https://www.shopify.com/checkout"],
+            ["Integrations", "Apps, tracking, inventory, and operational details.", "https://apps.shopify.com/"],
+            ["Result", "Commerce surfaces that feel premium and stay practical.", "https://www.shopify.com/partners"],
+            ["Product Pages", "Focused product storytelling and variant clarity.", "https://shopify.dev/docs/storefronts/themes/product-merchandising"],
+            ["Sections", "Reusable theme sections with merchant-friendly settings.", "https://shopify.dev/docs/storefronts/themes/architecture/sections"],
+            ["Analytics", "Tracking-ready events for product and funnel inspection.", "https://help.shopify.com/"]
         ]
     },
     {
         title: "Websites",
         panels: [
-            ["Portfolio", "Interactive personal presence with a controlled terminal entry."],
-            ["Landing Pages", "Direct first viewport, strong visual signal, clean calls to action."],
-            ["Dashboards", "Dense but readable layouts for repeated use."],
-            ["Animation", "Purposeful motion tied to state, not decorative noise."],
-            ["Responsive", "Stable geometry from mobile to wide desktop."],
-            ["Delivery", "Clean structure, tested paths, deployable static surfaces."]
+            ["Portfolio", "Interactive personal presence with a controlled terminal entry.", "https://vercel.com/"],
+            ["Landing Pages", "Direct first viewport, strong visual signal, clean calls to action.", "https://web.dev/"],
+            ["Dashboards", "Dense but readable layouts for repeated use.", "https://www.figma.com/"],
+            ["Animation", "Purposeful motion tied to state, not decorative noise.", "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API"],
+            ["Responsive", "Stable geometry from mobile to wide desktop.", "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"],
+            ["Delivery", "Clean structure, tested paths, deployable static surfaces.", "https://pages.github.com/"],
+            ["Accessibility", "Keyboard-friendly, semantic interfaces with readable contrast.", "https://www.w3.org/WAI/"],
+            ["Performance", "Fast loading, constrained assets, and measured interaction.", "https://pagespeed.web.dev/"],
+            ["Systems", "Reusable layout rules and maintainable visual language.", "https://developer.mozilla.org/"]
         ]
     },
     {
         title: "Rust",
         panels: [
-            ["Server", "Actix host serving a fast static portfolio shell."],
-            ["Systems", "Interest in safe, predictable backend foundations."],
-            ["Tools", "Cargo workflows, clear modules, explicit data flow."],
-            ["Interop", "Rust-backed services with frontend orchestration."],
-            ["Reliability", "Small surface area, understandable behavior."],
-            ["Next", "More service logic and typed APIs as the portfolio grows."]
+            ["Server", "Actix host serving a fast static portfolio shell.", "https://actix.rs/"],
+            ["Systems", "Interest in safe, predictable backend foundations.", "https://www.rust-lang.org/"],
+            ["Tools", "Cargo workflows, clear modules, explicit data flow.", "https://doc.rust-lang.org/cargo/"],
+            ["Interop", "Rust-backed services with frontend orchestration.", "https://wasm-bindgen.github.io/wasm-bindgen/"],
+            ["Reliability", "Small surface area, understandable behavior.", "https://doc.rust-lang.org/book/"],
+            ["Next", "More service logic and typed APIs as the portfolio grows.", "https://tokio.rs/"],
+            ["Actix Routes", "Explicit route handling for portfolio assets and pages.", "https://docs.rs/actix-web/latest/actix_web/"],
+            ["Static Assets", "Clean serving model for HTML, CSS, and JavaScript.", "https://docs.rs/actix-files/latest/actix_files/"],
+            ["Type Safety", "Using compiler feedback to keep server behavior predictable.", "https://doc.rust-lang.org/rust-by-example/"]
         ]
     }
 ];
@@ -75,14 +93,32 @@ const workspaceView = document.querySelector("#workspaceView");
 const terminalCopy = document.querySelector("#terminalCopy");
 const terminalCaret = document.querySelector("#terminalCaret");
 const inputLine = document.querySelector("#inputLine");
+const terminalStage = document.querySelector("#terminalStage");
 const systemInput = document.querySelector("#systemInput");
 const workspaceGrid = document.querySelector("#workspaceGrid");
 const detailView = document.querySelector("#detailView");
 const schematicGrid = document.querySelector("#schematicGrid");
 const backButton = document.querySelector("#backButton");
+const searchToggle = document.querySelector("#searchToggle");
+const themeToggle = document.querySelector("#themeToggle");
+const commandOverlay = document.querySelector("#commandOverlay");
+const commandCopy = document.querySelector("#commandCopy");
+const commandInput = document.querySelector("#commandInput");
 
 let activeModule = null;
 let terminalMode = "boot";
+let commandMode = false;
+let terminalBuffer = "";
+let commandBuffer = "";
+
+const moduleAliases = [
+    ["personal", "info", "cv", "resume", "about", "identity", "contact", "profile"],
+    ["habit", "routine", "daily", "health", "review", "principle"],
+    ["digital", "footprint", "github", "linkedin", "social", "online", "proof"],
+    ["shopify", "store", "commerce", "ecommerce", "theme", "liquid"],
+    ["website", "websites", "site", "portfolio", "landing", "dashboard", "animation"],
+    ["rust", "server", "actix", "backend", "systems", "api"]
+];
 
 function randomBootText(length = 12) {
     return Array.from({ length }, (_, index) => {
@@ -112,6 +148,13 @@ function clearTerminalClasses() {
     terminalCopy.className = "terminal-copy";
     terminalCaret.className = "terminal-caret";
     inputLine.className = "input-line";
+}
+
+function applyTheme(theme) {
+    const isLight = theme === "light";
+    document.body.classList.toggle("theme-light", isLight);
+    themeToggle.setAttribute("aria-pressed", String(!isLight));
+    window.localStorage.setItem("portfolio-theme", theme);
 }
 
 async function runTerminalIntro() {
@@ -146,8 +189,11 @@ async function runTerminalIntro() {
 
 function activateInput() {
     terminalMode = "input";
+    terminalBuffer = "";
     terminalCopy.className = "terminal-copy";
     terminalCopy.textContent = "";
+    terminalStage.classList.remove("is-error");
+    inputLine.classList.remove("is-error");
     setGuideLine("460px");
     terminalCaret.className = "terminal-caret is-breathing";
     systemInput.value = "";
@@ -159,16 +205,24 @@ async function handleSystemSubmit() {
         return;
     }
 
-    const value = systemInput.value.trim();
+    const value = (terminalBuffer || systemInput.value).trim();
     terminalMode = "processing";
     systemInput.blur();
     terminalCopy.textContent = value.toUpperCase();
 
     if (value.toLowerCase() !== "visit") {
         systemInput.value = "";
+        terminalBuffer = "";
         terminalCopy.classList.add("is-processing");
+        terminalStage.classList.add("is-error");
+        inputLine.classList.add("is-error");
+        setGuideLine("460px");
+        terminalCaret.className = "terminal-caret is-breathing";
+        await sleep(680);
         hideGuideLine();
-        await sleep(320);
+        inputLine.classList.remove("is-error");
+        terminalStage.classList.remove("is-error");
+        await sleep(160);
         activateInput();
         return;
     }
@@ -209,12 +263,13 @@ function getPanelOffset(index) {
 }
 
 function renderSchematic(module) {
-    schematicGrid.innerHTML = module.panels.map(([title, body], index) => {
+    schematicGrid.innerHTML = module.panels.map(([title, body, url], index) => {
         return `
-            <article class="schematic-panel" style="--from-x: 0px; --from-y: 0px; --delay: ${index * 80}ms">
+            <a class="schematic-panel" href="${url}" target="_blank" rel="noopener noreferrer" style="--from-x: 0px; --from-y: 0px; --delay: ${index * 80}ms">
                 <h2 class="panel-title">${title}</h2>
                 <p class="panel-body">${body}</p>
-            </article>
+                <span class="panel-url">${url.replace(/^mailto:/, "").replace(/^https?:\/\//, "")}</span>
+            </a>
         `;
     }).join("");
 }
@@ -259,6 +314,10 @@ function setPanelOrigins(folder) {
 }
 
 function openModule(index) {
+    if (activeModule) {
+        return;
+    }
+
     activeModule = modules[index];
     const folders = [...workspaceGrid.querySelectorAll(".folder")];
     const selectedFolder = folders[index];
@@ -287,10 +346,15 @@ function openModule(index) {
 }
 
 function closeModule() {
+    if (!activeModule) {
+        return Promise.resolve();
+    }
+
     detailView.classList.add("is-collapsing");
     detailView.classList.remove("is-active", "is-settled");
 
-    window.setTimeout(() => {
+    return new Promise((resolve) => {
+        window.setTimeout(() => {
         workspaceView.classList.remove("is-detail-open");
         detailView.classList.remove("is-collapsing");
         detailView.setAttribute("aria-hidden", "true");
@@ -301,7 +365,74 @@ function closeModule() {
         workspaceGrid.querySelectorAll(".folder").forEach((folder) => {
             folder.classList.remove("is-vanishing", "is-selected");
         });
-    }, 760);
+            resolve();
+        }, 760);
+    });
+}
+
+function findModuleIndex(query) {
+    const normalized = query.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
+    const words = normalized.split(/\s+/).filter(Boolean);
+
+    if (!words.length) {
+        return -1;
+    }
+
+    return moduleAliases.findIndex((aliases, index) => {
+        const title = modules[index].title.toLowerCase();
+        return words.some((word) => title.includes(word) || aliases.some((alias) => alias.includes(word) || word.includes(alias)));
+    });
+}
+
+async function typeCommandText(text, speed = 48) {
+    commandCopy.textContent = "";
+    for (const character of text) {
+        commandCopy.textContent += character;
+        await sleep(speed);
+    }
+}
+
+function openCommandOverlay() {
+    commandMode = true;
+    commandOverlay.classList.add("is-active");
+    commandOverlay.setAttribute("aria-hidden", "false");
+    commandInput.value = "";
+    commandBuffer = "";
+    commandCopy.textContent = "STATE TARGET";
+    window.setTimeout(() => commandInput.focus(), 80);
+}
+
+function closeCommandOverlay() {
+    commandMode = false;
+    commandOverlay.classList.remove("is-active");
+    commandOverlay.setAttribute("aria-hidden", "true");
+    commandInput.value = "";
+    commandBuffer = "";
+}
+
+async function submitCommand() {
+    if (!commandMode) {
+        return;
+    }
+
+    const query = (commandBuffer || commandInput.value).trim();
+    const index = findModuleIndex(query);
+
+    if (index === -1) {
+        commandInput.value = "";
+        commandBuffer = "";
+        await typeCommandText("NO MATCH", 42);
+        await sleep(420);
+        commandCopy.textContent = "STATE TARGET";
+        commandInput.focus();
+        return;
+    }
+
+    commandCopy.textContent = `OPEN ${modules[index].title}`;
+    await sleep(280);
+    closeCommandOverlay();
+    await closeModule();
+    window.setTimeout(() => openModule(index), 120);
 }
 
 document.addEventListener("click", (event) => {
@@ -314,11 +445,65 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
+        if (commandMode) {
+            submitCommand();
+            return;
+        }
         handleSystemSubmit();
+        event.preventDefault();
+        return;
+    }
+
+    if (event.key === "Escape" && commandMode) {
+        closeCommandOverlay();
+        return;
+    }
+
+    if (commandMode) {
+        if (event.key === "Backspace") {
+            commandBuffer = commandBuffer.slice(0, -1);
+            commandInput.value = commandBuffer;
+            commandCopy.textContent = commandBuffer.toUpperCase() || "STATE TARGET";
+            commandInput.focus();
+            event.preventDefault();
+            return;
+        }
+
+        if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+            commandBuffer += event.key;
+            commandInput.value = commandBuffer;
+            commandCopy.textContent = commandBuffer.toUpperCase();
+            commandInput.focus();
+            event.preventDefault();
+            return;
+        }
+    }
+
+    if (terminalMode === "input" && !commandMode) {
+        if (event.key === "Backspace") {
+            terminalBuffer = terminalBuffer.slice(0, -1);
+            terminalCopy.textContent = terminalBuffer.toUpperCase();
+            systemInput.value = terminalBuffer;
+            event.preventDefault();
+            return;
+        }
+
+        if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+            terminalBuffer += event.key;
+            terminalCopy.textContent = terminalBuffer.toUpperCase();
+            systemInput.value = terminalBuffer;
+            systemInput.focus();
+            event.preventDefault();
+        }
     }
 });
 
 document.addEventListener("pointerdown", () => {
+    if (commandMode) {
+        commandInput.focus();
+        return;
+    }
+
     if (terminalMode === "input") {
         systemInput.focus();
     }
@@ -326,10 +511,22 @@ document.addEventListener("pointerdown", () => {
 
 systemInput.addEventListener("input", () => {
     if (terminalMode === "input") {
-        terminalCopy.textContent = systemInput.value.toUpperCase();
+        terminalBuffer = systemInput.value;
+        terminalCopy.textContent = terminalBuffer.toUpperCase();
     }
 });
 
 backButton.addEventListener("click", closeModule);
+searchToggle.addEventListener("click", openCommandOverlay);
+themeToggle.addEventListener("click", () => {
+    applyTheme(document.body.classList.contains("theme-light") ? "dark" : "light");
+});
+commandInput.addEventListener("input", () => {
+    if (commandMode) {
+        commandBuffer = commandInput.value;
+        commandCopy.textContent = commandBuffer.toUpperCase() || "STATE TARGET";
+    }
+});
 
+applyTheme(window.localStorage.getItem("portfolio-theme") || "dark");
 runTerminalIntro();

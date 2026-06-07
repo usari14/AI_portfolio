@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/styles.css?v=4">
+    <link rel="stylesheet" href="/assets/styles.css?v=10">
 </head>
+
 <body>
     <main class="app-shell" aria-live="polite">
         <section class="terminal-view is-active" id="terminalView">
@@ -16,26 +18,39 @@
                 <div class="terminal-copy" id="terminalCopy"></div>
                 <div class="input-line" id="inputLine" aria-hidden="true"></div>
                 <div class="terminal-caret" id="terminalCaret" aria-hidden="true"></div>
-                <input
-                    class="system-input"
-                    id="systemInput"
-                    autocomplete="off"
-                    autocapitalize="characters"
-                    spellcheck="false"
-                    aria-label="System access input"
-                >
+                <input class="system-input" id="systemInput" autocomplete="off" autocapitalize="characters"
+                    spellcheck="false" aria-label="System access input">
             </div>
         </section>
-        
+
         <section class="workspace-view" id="workspaceView" aria-label="Portfolio workspace">
+            <div class="workspace-controls" aria-label="Workspace controls">
+                <button class="search-toggle" id="searchToggle" type="button" aria-label="Search folders"></button>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"
+                    aria-pressed="false">
+                    <span class="theme-track" aria-hidden="true">
+                        <span class="theme-thumb"></span>
+                    </span>
+                </button>
+            </div>
             <div class="workspace-grid" id="workspaceGrid"></div>
             <div class="detail-view" id="detailView" aria-hidden="true">
                 <button class="back-button" id="backButton" type="button" aria-label="Back to folders">BACK</button>
                 <div class="schematic-grid" id="schematicGrid"></div>
             </div>
+            <div class="command-overlay" id="commandOverlay" aria-hidden="true">
+                <div class="command-panel">
+                    <div class="command-copy" id="commandCopy">STATE TARGET</div>
+                    <div class="command-line"></div>
+                    <div class="command-caret" aria-hidden="true"></div>
+                    <input class="command-input" id="commandInput" autocomplete="off" autocapitalize="characters"
+                        spellcheck="false" aria-label="Search command">
+                </div>
+            </div>
         </section>
     </main>
 
-    <script src="/assets/app.js?v=4" defer></script>
+    <script src="/assets/app.js?v=10" defer></script>
 </body>
+
 </html>
