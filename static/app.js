@@ -2,16 +2,10 @@ const bootGlyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const modules = [
     {
         title: "Personal Info",
+        personal: true,
         panels: [
-            ["CV", "Resume, profile summary, role fit, and capability snapshot.", "https://www.linkedin.com/"],
-            ["Identity", "Usama. Frontend systems, austere interfaces, precise motion.", "https://github.com/"],
-            ["Focus", "High-end web experiences with deliberate state and clean geometry.", "https://developer.mozilla.org/"],
-            ["Location", "Available for remote collaborations and product-facing builds.", "https://www.linkedin.com/"],
-            ["Stack", "Rust, JavaScript, CSS architecture, interactive motion systems.", "https://www.rust-lang.org/"],
-            ["Signal", "Minimal surface. Strong rhythm. Fast transitions.", "https://web.dev/"],
-            ["Contact", "Purpose-driven access through the portfolio workspace.", "mailto:hello@example.com"],
-            ["Timeline", "Career notes, learning arc, and active direction.", "https://github.com/"],
-            ["Availability", "Collaboration status, preferred project types, and response path.", "https://www.linkedin.com/"]
+            ["CV", "Open the full resume document.", "cv"],
+            ["Experience", "Professional experience from the resume.", "experience"]
         ]
     },
     {
@@ -110,6 +104,7 @@ let terminalMode = "boot";
 let commandMode = false;
 let terminalBuffer = "";
 let commandBuffer = "";
+let personalSubView = null;
 
 const moduleAliases = [
     ["personal", "info", "cv", "resume", "about", "identity", "contact", "profile"],
@@ -263,6 +258,14 @@ function getPanelOffset(index) {
 }
 
 function renderSchematic(module) {
+    schematicGrid.classList.remove("is-cv-view", "is-personal-files", "is-experience-view");
+    personalSubView = null;
+
+    if (module.personal) {
+        renderPersonalFiles(module);
+        return;
+    }
+
     schematicGrid.innerHTML = module.panels.map(([title, body, url], index) => {
         return `
             <a class="schematic-panel" href="${url}" target="_blank" rel="noopener noreferrer" style="--from-x: 0px; --from-y: 0px; --delay: ${index * 80}ms">
@@ -272,6 +275,55 @@ function renderSchematic(module) {
             </a>
         `;
     }).join("");
+}
+
+function renderPersonalFiles(module) {
+    personalSubView = null;
+    schematicGrid.className = "schematic-grid is-personal-files";
+    schematicGrid.innerHTML = module.panels.map(([title, body, action], index) => `
+        <button class="schematic-panel personal-file" type="button" data-personal-action="${action}" style="--from-x: 0px; --from-y: 0px; --delay: ${index * 80}ms">
+            <h2 class="panel-title">${title}</h2>
+            <p class="panel-body">${body}</p>
+            <span class="panel-url">${action === "cv" ? "static/cv.pdf" : "professional-experience"}</span>
+        </button>
+    `).join("");
+}
+
+function renderCvView() {
+    personalSubView = "cv";
+    schematicGrid.className = "schematic-grid is-cv-view";
+    schematicGrid.innerHTML = `
+        <article class="cv-shell" style="--from-x: 0px; --from-y: 0px;">
+            <div class="cv-header">
+                <h2>CV</h2>
+                <a href="./cv.pdf" target="_blank" rel="noopener noreferrer">OPEN PDF</a>
+            </div>
+            <a class="cv-image-link" href="./cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV PDF">
+                <img class="cv-image" src="./cv-image.png" alt="Usama CV">
+            </a>
+        </article>
+    `;
+}
+
+function renderExperienceView() {
+    personalSubView = "experience";
+    schematicGrid.className = "schematic-grid is-experience-view";
+    schematicGrid.innerHTML = `
+        <article class="experience-shell" style="--from-x: 0px; --from-y: 0px;">
+            <div class="experience-heading">
+                <span>Professional</span>
+                <h2>Experience</h2>
+            </div>
+            <div class="experience-list">
+                <section>
+                    <span class="experience-date">Dec 2026 - Present / Remote</span>
+                    <h3>SCRPTBLE X WHATFLOW</h3>
+                    <p>Shopify app development and maintenance for high-traffic applications. Full-stack application work, technical consultation, integration support, and ongoing maintenance for client requirements.</p>
+                    <div class="experience-tags"><span>Shopify Apps</span><span>Full Stack</span><span>Technical Lead</span></div>
+                </section>
+            </div>
+        </article>
+    `;
 }
 
 function renderDetailGhost(folder) {
@@ -303,7 +355,7 @@ function setPanelOrigins(folder) {
     const originX = folderRect.left + folderRect.width / 2;
     const originY = folderRect.top + folderRect.height / 2;
 
-    schematicGrid.querySelectorAll(".schematic-panel").forEach((panel) => {
+    schematicGrid.querySelectorAll(".schematic-panel, .cv-shell, .experience-shell").forEach((panel) => {
         const panelRect = panel.getBoundingClientRect();
         const panelX = panelRect.left + panelRect.width / 2;
         const panelY = panelRect.top + panelRect.height / 2;
@@ -361,6 +413,7 @@ function closeModule() {
         schematicGrid.innerHTML = "";
         detailView.querySelector(".detail-ghost")?.remove();
         activeModule = null;
+        personalSubView = null;
 
         workspaceGrid.querySelectorAll(".folder").forEach((folder) => {
             folder.classList.remove("is-vanishing", "is-selected");
@@ -368,6 +421,16 @@ function closeModule() {
             resolve();
         }, 760);
     });
+}
+
+function handleBack() {
+    if (activeModule?.personal && personalSubView) {
+        renderPersonalFiles(activeModule);
+        detailView.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+    }
+
+    closeModule();
 }
 
 function findModuleIndex(query) {
@@ -436,6 +499,18 @@ async function submitCommand() {
 }
 
 document.addEventListener("click", (event) => {
+    const personalFile = event.target.closest(".personal-file");
+    if (personalFile) {
+        const action = personalFile.dataset.personalAction;
+        if (action === "cv") {
+            renderCvView();
+        }
+        if (action === "experience") {
+            renderExperienceView();
+        }
+        return;
+    }
+
     const folder = event.target.closest(".folder");
     if (!folder || activeModule) {
         return;
@@ -516,7 +591,11 @@ systemInput.addEventListener("input", () => {
     }
 });
 
-backButton.addEventListener("click", closeModule);
+backButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    handleBack();
+});
 searchToggle.addEventListener("click", openCommandOverlay);
 themeToggle.addEventListener("click", () => {
     applyTheme(document.body.classList.contains("theme-light") ? "dark" : "light");
