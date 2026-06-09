@@ -8,16 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=24">
+    <link rel="stylesheet" href="./styles.css?v=26">
 </head>
 
 <body>
     <main class="app-shell" aria-live="polite">
         <section class="terminal-view is-active" id="terminalView">
+            <div class="terminal-controls" aria-label="Welcome controls">
+                <button class="theme-toggle" id="welcomeThemeToggle" type="button" aria-label="Switch theme"
+                    aria-pressed="false">
+                    <span class="theme-track" aria-hidden="true">
+                        <span class="theme-thumb"></span>
+                    </span>
+                </button>
+            </div>
             <div class="terminal-stage" id="terminalStage">
                 <div class="terminal-copy" id="terminalCopy"></div>
                 <div class="input-line" id="inputLine" aria-hidden="true"></div>
                 <div class="terminal-caret" id="terminalCaret" aria-hidden="true"></div>
+                <div class="terminal-note" id="terminalNote" aria-hidden="true">VISITOR? TYPE VISIT</div>
                 <input class="system-input" id="systemInput" autocomplete="off" autocapitalize="characters"
                     spellcheck="false" aria-label="System access input">
             </div>
@@ -26,7 +35,7 @@
         <section class="workspace-view" id="workspaceView" aria-label="Portfolio workspace">
             <div class="workspace-controls" aria-label="Workspace controls">
                 <button class="search-toggle" id="searchToggle" type="button" aria-label="Search folders"></button>
-                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"
+                <button class="theme-toggle" type="button" aria-label="Switch theme"
                     aria-pressed="false">
                     <span class="theme-track" aria-hidden="true">
                         <span class="theme-thumb"></span>
@@ -50,7 +59,7 @@
         </section>
     </main>
 
-    <script src="./app.js?v=24" defer></script>
+    <script src="./app.js?v=26" defer></script>
 </body>
 
 </html>

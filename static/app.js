@@ -88,13 +88,14 @@ const terminalCopy = document.querySelector("#terminalCopy");
 const terminalCaret = document.querySelector("#terminalCaret");
 const inputLine = document.querySelector("#inputLine");
 const terminalStage = document.querySelector("#terminalStage");
+const terminalNote = document.querySelector("#terminalNote");
 const systemInput = document.querySelector("#systemInput");
 const workspaceGrid = document.querySelector("#workspaceGrid");
 const detailView = document.querySelector("#detailView");
 const schematicGrid = document.querySelector("#schematicGrid");
 const backButton = document.querySelector("#backButton");
 const searchToggle = document.querySelector("#searchToggle");
-const themeToggle = document.querySelector("#themeToggle");
+const themeToggles = document.querySelectorAll(".theme-toggle");
 const commandOverlay = document.querySelector("#commandOverlay");
 const commandCopy = document.querySelector("#commandCopy");
 const commandInput = document.querySelector("#commandInput");
@@ -131,6 +132,16 @@ function hideGuideLine() {
     inputLine.classList.remove("is-active");
 }
 
+function showTerminalNote() {
+    terminalNote.classList.add("is-active");
+    terminalNote.setAttribute("aria-hidden", "false");
+}
+
+function hideTerminalNote() {
+    terminalNote.classList.remove("is-active");
+    terminalNote.setAttribute("aria-hidden", "true");
+}
+
 async function typeText(text, speed = 72) {
     terminalCopy.textContent = "";
     for (const character of text) {
@@ -143,12 +154,15 @@ function clearTerminalClasses() {
     terminalCopy.className = "terminal-copy";
     terminalCaret.className = "terminal-caret";
     inputLine.className = "input-line";
+    hideTerminalNote();
 }
 
 function applyTheme(theme) {
     const isLight = theme === "light";
     document.body.classList.toggle("theme-light", isLight);
-    themeToggle.setAttribute("aria-pressed", String(!isLight));
+    themeToggles.forEach((toggle) => {
+        toggle.setAttribute("aria-pressed", String(!isLight));
+    });
     window.localStorage.setItem("portfolio-theme", theme);
 }
 
@@ -190,6 +204,7 @@ function activateInput() {
     terminalStage.classList.remove("is-error");
     inputLine.classList.remove("is-error");
     setGuideLine("460px");
+    showTerminalNote();
     terminalCaret.className = "terminal-caret is-breathing";
     systemInput.value = "";
     systemInput.focus();
@@ -202,6 +217,7 @@ async function handleSystemSubmit() {
 
     const value = (terminalBuffer || systemInput.value).trim();
     terminalMode = "processing";
+    hideTerminalNote();
     systemInput.blur();
     terminalCopy.textContent = value.toUpperCase();
 
@@ -284,7 +300,7 @@ function renderPersonalFiles(module) {
         <button class="schematic-panel personal-file" type="button" data-personal-action="${action}" style="--from-x: 0px; --from-y: 0px; --delay: ${index * 80}ms">
             <h2 class="panel-title">${title}</h2>
             <p class="panel-body">${body}</p>
-            <span class="panel-url">${action === "cv" ? "static/cv.pdf" : "professional-experience"}</span>
+            <span class="panel-url">${action === "cv" ? "static/assets/cv.pdf" : "professional-experience"}</span>
         </button>
     `).join("");
 }
@@ -296,10 +312,10 @@ function renderCvView() {
         <article class="cv-shell" style="--from-x: 0px; --from-y: 0px;">
             <div class="cv-header">
                 <h2>CV</h2>
-                <a href="./cv.pdf" target="_blank" rel="noopener noreferrer">OPEN PDF</a>
+                <a href="./assets/cv.pdf" target="_blank" rel="noopener noreferrer">OPEN PDF</a>
             </div>
-            <a class="cv-image-link" href="./cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV PDF">
-                <img class="cv-image" src="./cv-image.png" alt="Usama CV">
+            <a class="cv-image-link" href="./assets/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV PDF">
+                <img class="cv-image" src="./assets/cv-image.png" alt="Usama CV">
             </a>
         </article>
     `;
@@ -597,8 +613,10 @@ backButton.addEventListener("click", (event) => {
     handleBack();
 });
 searchToggle.addEventListener("click", openCommandOverlay);
-themeToggle.addEventListener("click", () => {
-    applyTheme(document.body.classList.contains("theme-light") ? "dark" : "light");
+themeToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+        applyTheme(document.body.classList.contains("theme-light") ? "dark" : "light");
+    });
 });
 commandInput.addEventListener("input", () => {
     if (commandMode) {

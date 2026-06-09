@@ -8,6 +8,9 @@
     --line-soft: #767676;
     --accent: #d63b3b;
     --bg: #080808;
+    --welcome-image: url("./assets/black welcome image.png");
+    --site-image-shade: rgba(8, 8, 8, 0.78);
+    --panel-image-shade: rgba(24, 24, 24, 0.84);
     --ease: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -20,6 +23,9 @@ body.theme-light {
     --line: #636363;
     --line-soft: #8d8d8d;
     --bg: #1f1f1f;
+    --welcome-image: url("./assets/white welcome image.png");
+    --site-image-shade: rgba(232, 232, 232, 0.78);
+    --panel-image-shade: rgba(232, 232, 232, 0.86);
 }
 
 * {
@@ -33,7 +39,10 @@ body {
 
 body {
     margin: 0;
-    background: var(--bg);
+    background:
+        linear-gradient(var(--site-image-shade), var(--site-image-shade)),
+        var(--welcome-image) center / cover fixed no-repeat,
+        var(--bg);
     color: var(--ink);
     font-family: "Black Ops One", system-ui, sans-serif;
     letter-spacing: 0;
@@ -66,6 +75,33 @@ input {
 .workspace-view.is-active {
     opacity: 1;
     pointer-events: auto;
+}
+
+.terminal-view {
+    isolation: isolate;
+    background:
+        linear-gradient(rgba(var(--paper-rgb), 0.2), rgba(var(--paper-rgb), 0.2)),
+        var(--welcome-image) center / cover no-repeat,
+        var(--paper);
+}
+
+.terminal-view::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 50% 48%, rgba(var(--paper-rgb), 0.04), rgba(var(--paper-rgb), 0.74) 72%),
+        linear-gradient(rgba(var(--ink-rgb), 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--ink-rgb), 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 42px 42px, 42px 42px;
+}
+
+.terminal-controls {
+    position: absolute;
+    top: clamp(24px, 4vw, 42px);
+    right: clamp(24px, 4vw, 42px);
+    z-index: 12;
 }
 
 .terminal-stage {
@@ -159,6 +195,34 @@ input {
     animation: processCaret 420ms var(--ease);
 }
 
+.terminal-note {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: clamp(0.72rem, 1vw, 0.92rem);
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 260ms ease, transform 260ms var(--ease), color 260ms ease;
+    pointer-events: none;
+}
+
+.terminal-note.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.terminal-note::after {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 1px;
+    margin: 10px auto 0;
+    background: var(--accent);
+    opacity: 0.75;
+}
+
 .system-input {
     position: fixed;
     width: 1px;
@@ -175,8 +239,10 @@ input {
         linear-gradient(rgba(var(--ink-rgb), 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(var(--ink-rgb), 0.035) 1px, transparent 1px),
         radial-gradient(circle at 50% 45%, rgba(214, 59, 59, 0.055), transparent 34%),
+        linear-gradient(var(--site-image-shade), var(--site-image-shade)),
+        var(--welcome-image) center / cover fixed no-repeat,
         var(--paper);
-    background-size: 42px 42px, 42px 42px, 100% 100%, auto;
+    background-size: 42px 42px, 42px 42px, 100% 100%, 100% 100%, cover, auto;
 }
 
 .workspace-controls {
@@ -558,8 +624,10 @@ body:not(.theme-light) .theme-thumb {
     background:
         linear-gradient(rgba(var(--ink-rgb), 0.028) 1px, transparent 1px),
         linear-gradient(90deg, rgba(var(--ink-rgb), 0.028) 1px, transparent 1px),
+        linear-gradient(var(--panel-image-shade), var(--panel-image-shade)),
+        var(--welcome-image) center / cover fixed no-repeat,
         var(--paper);
-    background-size: 38px 38px, 38px 38px, auto;
+    background-size: 38px 38px, 38px 38px, 100% 100%, cover, auto;
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
@@ -572,7 +640,10 @@ body:not(.theme-light) .theme-thumb {
     z-index: 20;
     display: grid;
     place-items: center;
-    background: rgba(var(--paper-rgb), 0.88);
+    background:
+        linear-gradient(var(--panel-image-shade), var(--panel-image-shade)),
+        var(--welcome-image) center / cover fixed no-repeat,
+        rgba(var(--paper-rgb), 0.88);
     opacity: 0;
     pointer-events: none;
     transition: opacity 320ms var(--ease);
@@ -1187,6 +1258,11 @@ body:not(.theme-light) .theme-thumb {
         top: 18px;
         right: 18px;
         gap: 10px;
+    }
+
+    .terminal-controls {
+        top: 18px;
+        right: 18px;
     }
 
     .search-toggle {

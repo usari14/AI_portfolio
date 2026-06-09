@@ -17,7 +17,7 @@ async fn main() -> std::io::Result<()> {
 }
 
 async fn cv_pdf() -> HttpResponse {
-    match std::fs::read("static/cv.pdf") {
+    match std::fs::read("static/assets/cv.pdf") {
         Ok(pdf) => HttpResponse::Ok()
             .insert_header((header::CONTENT_TYPE, "application/pdf"))
             .insert_header((header::CONTENT_DISPOSITION, "inline; filename=\"cv.pdf\""))
